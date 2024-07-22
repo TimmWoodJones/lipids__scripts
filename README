@@ -1,14 +1,4 @@
-This document outlines the organization and contents of this folder. 
-
-
-SIMULATION DATA
--This folder contains LAMMPS simulation data. The simulations are all stored in the folder "TP_space/", as they are probing different points in a temperature-pressure phase-space. Simulations are sorted by the constant pressure, with each folder labeled as "P$X/" where $X is in [0.05,2.0] for $X=0.05*(i+1), with i in [0,39] (Note: this constant pressure is only the input pressure for the simulation, the actual pressure that is held in the simulation ends up being different.) In each constant pressure folder, there are folders labeled "heating/", "cooling/", and "const_T/". "heating/" and "cooling/" are what one would expect, simulations where the temperature increases and decreases, respectively, while "const_T" contains simulations with constant temperature. These mainly contain simulations with starting conditions from choice steps in the heating simulations around a phase change.
-
--This folder also contains a test simulation in "heating_test/", another testing 2 different species of lipids in "mixture_test/", and the beginnings of simulating different mixtures of 2 species in "mixtures/".
-
-
-PYTHON SCRIPTS
--This folder also contains many python scripts which analyze the simulations, calculate and store new data arrays, and plots certain data. The following is a list and description of these scripts.
+This document outlines the organization and contents of this folder: many python scripts which analyze the simulations, calculate and store new data arrays, and plots certain data. The following is a list and description of these scripts.
 
 -[XY]_plotting.py: plots the values of thermodynamic values X and Y for a number of simulations
 
