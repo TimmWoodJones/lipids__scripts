@@ -1,0 +1,44 @@
+This document outlines the organization and contents of this folder. 
+
+
+SIMULATION DATA
+-This folder contains LAMMPS simulation data. The simulations are all stored in the folder "TP_space/", as they are probing different points in a temperature-pressure phase-space. Simulations are sorted by the constant pressure, with each folder labeled as "P$X/" where $X is in [0.05,2.0] for $X=0.05*(i+1), with i in [0,39] (Note: this constant pressure is only the input pressure for the simulation, the actual pressure that is held in the simulation ends up being different.) In each constant pressure folder, there are folders labeled "heating/", "cooling/", and "const_T/". "heating/" and "cooling/" are what one would expect, simulations where the temperature increases and decreases, respectively, while "const_T" contains simulations with constant temperature. These mainly contain simulations with starting conditions from choice steps in the heating simulations around a phase change.
+
+-This folder also contains a test simulation in "heating_test/", another testing 2 different species of lipids in "mixture_test/", and the beginnings of simulating different mixtures of 2 species in "mixtures/".
+
+
+PYTHON SCRIPTS
+-This folder also contains many python scripts which analyze the simulations, calculate and store new data arrays, and plots certain data. The following is a list and description of these scripts.
+
+-[XY]_plotting.py: plots the values of thermodynamic values X and Y for a number of simulations
+
+-calc_all.py: runs scripts "phase_calc.py" and "hist_calc.py" for many simulations
+
+-dens_hist_calc.py: now-redundant script that calculates the density of a simulation by dividing the system into a grid and count the density of each grid for each printed timestep; outputs a numpy-array that can be used to plot a histogram
+
+-ext_traj_maker.py: reads trajectory file of a simulation and outputs numpy arrays of the x-,y-, and z-positions of the top atom and of the spin of the lipid
+
+-grid_density_calc.py: defunct script, old version of dens_hist_calc.py
+
+-grid_plot.py: unfinished, unrefined script to plot histogram arrays on a 2d color map
+
+-hex_mod_traj_maker.py: makes a new version of a simulation's trajectory file where the z-coordinate is replaced by the modulus of that atoms hexagonal order
+
+-hex_proj_traj_maker.py: makes a new version of a simulation's trajectory file where the z-coordinate is replaced by the projection of the atom's hexagonal order onto the mean hexagonal order
+
+-hist_calcs.py: calculates histograms of density of particles, average modulus of hexagonal order, average spin, and the volume for a single simulation and outputs numpy arrays
+
+-hist_plot.py: plots and saves histogram of a single step or all steps from a histogram calculated by "hist_calcs.py"
+
+-make_[X]_movie.py: makes a movie of quantity [X] out of frames produced by either "hist_plot.py" or "plot_[X]_traj.py"
+
+-make_timestep_config.py: makes new configuration file from a particular time step to run a new simulation starting from that timestep, additionally prints the temperature at that timestep so that value can be changed in the input file
+
+-movie_maker.py: takes in frames and makes a movie, embedded in "make_[X]_movie.py" scripts
+
+-phase_calc.py: analyzes trajectory.lammpstrj and log.dat files for a simulation and outputs temperature, pressure, magnetization, and average hexatic order in numpy-arrays
+
+-plot_[X]_traj.py: plots and saves x- and y-coordinates of a single step or all steps of a simulation colored by the value of quantity X
+
+volume_plot.py: makes a plot of volume vs. time for a single simulation
+
